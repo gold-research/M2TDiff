@@ -874,9 +874,9 @@ color:#29458F;
 
             <p>
                 <strong>M2TDiff++.</strong>
-                M2TDiff++ extends the original framework by exploring
-                richer spatial-temporal cues and improving object query
-                generation for higher detection accuracy.
+                 M2TDiff++ adopts a frame-wise rather than sequence-wise detection
+paradigm to better exploit spatial-temporal information and introduces a global context fusion block to reduce feature redundancy through token-level merging,
+producing more refined target-frame feature representations and thus improving detection accuracy.
             </p>
 
         </div>
@@ -903,9 +903,10 @@ color:#29458F;
 
             <p>
                 <strong>M2TDiff-Fast.</strong>
-                M2TDiff-Fast introduces an efficient keyframe/non-keyframe
-                processing strategy to accelerate inference while preserving
-                competitive detection performance.
+                M2TDiff-Fast includes a content-aware keyframe selection block to
+divide the input frames into keyframes and non-keyframes, in which keyframes are processed by the full detection pipeline, whereas non-keyframes bypass the
+multi-scale graph interaction transformer encoder and use lightweight keyframe memory propagation to generate encoder features, thus accelerating inference.
+
             </p>
 
         </div>
