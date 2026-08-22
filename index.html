@@ -734,7 +734,109 @@
 
 </section>
 
+<section>
 
+<div class="container">
+
+
+<h2 class="section-title">
+    Requirements
+</h2>
+
+
+<div class="section-text">
+
+
+<p>
+The code is tested with the following environment:
+</p>
+
+
+<ul>
+
+<li>
+Linux, CUDA >= 11.0, GCC >= 5.4
+</li>
+
+<li>
+Python >= 3.8
+</li>
+
+</ul>
+
+
+
+<p>
+We recommend using Anaconda to create a virtual environment:
+</p>
+
+
+<div class="code-block">
+
+<pre>
+conda create -n M2TDiff python=3.8 pip
+
+conda activate M2TDiff
+</pre>
+
+</div>
+
+
+
+<p>
+Install PyTorch and torchvision according to your CUDA version.
+For example:
+</p>
+
+
+<div class="code-block">
+
+<pre>
+conda install pytorch torchvision 
+-c pytorch
+</pre>
+
+</div>
+
+
+
+<p>
+Install other dependencies:
+</p>
+
+
+<div class="code-block">
+
+<pre>
+pip install -r requirements.txt
+</pre>
+
+</div>
+
+
+
+<p>
+Build MultiScaleDeformableAttention:
+</p>
+
+
+<div class="code-block">
+
+<pre>
+cd ./models/ops
+
+sh ./make.sh
+</pre>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
 
 
 <!-- =========================================================
