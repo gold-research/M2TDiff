@@ -405,6 +405,73 @@ color:white;
 
 }
 
+
+
+        .sota-table-wrapper{
+
+overflow-x:auto;
+
+margin-top:30px;
+
+}
+
+
+
+.sota-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+font-size:15px;
+
+background:white;
+
+}
+
+
+
+.sota-table th{
+
+background:#29458F;
+
+color:white;
+
+padding:12px;
+
+text-align:center;
+
+}
+
+
+
+.sota-table td{
+
+padding:10px;
+
+text-align:center;
+
+border-bottom:1px solid #ddd;
+
+}
+
+
+
+.sota-table tr:hover{
+
+background:#f5f5f5;
+
+}
+
+
+
+.highlight{
+
+font-weight:bold;
+
+color:#29458F;
+
+}
         /* =========================
            Citation
         ========================= */
@@ -1270,7 +1337,475 @@ by integrating RDQG, MGTE, and SMTD.
 
 </section>
 
+<section>
 
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Comparison with State-of-the-Art Methods
+
+</h2>
+
+
+
+<div class="section-text">
+
+<p>
+
+We compare M2TDiff with existing state-of-the-art video object
+detection methods on the ImageNet VID dataset.
+
+</p>
+
+
+</div>
+
+
+
+<div class="sota-table-wrapper">
+
+
+<table class="sota-table">
+
+
+<thead>
+
+
+<tr>
+
+<th>
+Method
+</th>
+
+<th>
+Venue
+</th>
+
+<th>
+Backbone
+</th>
+
+<th>
+Detector
+</th>
+
+<th>
+mAP (%)
+</th>
+
+<th>
+Runtime (ms)
+</th>
+
+</tr>
+
+
+</thead>
+
+
+
+<tbody>
+
+
+<tr>
+
+<td>
+MEGA
+</td>
+
+<td>
+CVPR 2020
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Faster R-CNN
+</td>
+
+<td>
+82.9
+</td>
+
+<td>
+95.0
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+HVRNet
+</td>
+
+<td>
+ECCV 2020
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Faster R-CNN
+</td>
+
+<td>
+83.2
+</td>
+
+<td>
+84.9
+</td>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+STSN
+</td>
+
+<td>
+ACM MM 2020
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Faster R-CNN
+</td>
+
+<td>
+84.1
+</td>
+
+<td>
+384.5
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+TransVOD Lite
+</td>
+
+<td>
+TPAMI 2023
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Deformable DETR
+</td>
+
+<td>
+80.5
+</td>
+
+<td>
+28.4
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+GMLCN
+</td>
+
+<td>
+TMM 2023
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Faster R-CNN
+</td>
+
+<td>
+78.6
+</td>
+
+<td>
+39.6
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+ClipVID
+</td>
+
+<td>
+ICCV 2023
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+DETR
+</td>
+
+<td>
+84.7
+</td>
+
+<td>
+25.5
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+CDA-Net
+</td>
+
+<td>
+TMM 2024
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Faster R-CNN
+</td>
+
+<td>
+85.4
+</td>
+
+<td>
+80.6
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+TGBFormer
+</td>
+
+<td>
+AAAI 2025
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+DETR
+</td>
+
+<td>
+86.5
+</td>
+
+<td>
+24.1
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+MSTDiff
+</td>
+
+<td>
+AAAI 2026
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Deformable DETR
+</td>
+
+<td>
+87.7
+</td>
+
+<td>
+25.8
+</td>
+
+</tr>
+
+
+
+
+
+<tr class="highlight">
+
+
+<td>
+M2TDiff
+</td>
+
+<td>
+Ours
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Deformable DETR
+</td>
+
+<td>
+89.2
+</td>
+
+<td>
+22.1
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr class="highlight">
+
+
+<td>
+M2TDiff++
+</td>
+
+<td>
+Ours
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Deformable DETR
+</td>
+
+<td>
+89.9
+</td>
+
+<td>
+67.8
+</td>
+
+
+</tr>
+
+
+
+
+
+<tr class="highlight">
+
+
+<td>
+M2TDiff-Fast
+</td>
+
+<td>
+Ours
+</td>
+
+<td>
+ResNet-101
+</td>
+
+<td>
+Deformable DETR
+</td>
+
+<td>
+88.5
+</td>
+
+<td>
+18.6
+</td>
+
+
+</tr>
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
 <!-- =========================================================
      CITATION
 ========================================================= -->
@@ -1315,33 +1850,25 @@ year={2026}
 }
 
 
-@inproceedings{tgbformer2025,
-
-title={TGBFormer: Transformer-GraphFormer Blender Network
-for Video Object Detection},
-
-author={Your Name and Co-Authors},
-
-booktitle={Proceedings of the AAAI Conference
-on Artificial Intelligence},
-
-year={2025}
-
+@inproceedings{qi2025tgbformer,
+  title={Tgbformer: Transformer-graphformer blender network for video object detection},
+  author={Qi, Qiang and Wang, Xiao},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={39},
+  number={6},
+  pages={6559--6567},
+  year={2025}
 }
 
 
-@inproceedings{mstdiff2026,
-
-title={MSTDiff: Multiscale-Aware Transformer Diffusion
-Network for Video Object Detection},
-
-author={Your Name and Co-Authors},
-
-booktitle={Proceedings of the AAAI Conference
-on Artificial Intelligence},
-
-year={2026}
-
+@inproceedings{qi2026mstdiff,
+  title={MSTDiff: Multiscale-Aware Transformer Diffusion Network for Video Object Detection},
+  author={Qi, Qiang and Shang, Wenqi and Wang, Xiao and Liang, Yanjie and Lin, Shuyuan},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={40},
+  number={10},
+  pages={8475--8483},
+  year={2026}
 }
 
 </pre>
@@ -1368,4 +1895,3 @@ year={2026}
 
 </body>
 </html>
-```
