@@ -562,18 +562,6 @@ color:#29458F;
             An Extended Framework Built upon Our AAAI 2025 and AAAI 2026 Works
         </div>
 
-        <div class="buttons">
-
-            <!-- Replace these links later -->
-            <a class="button" href="#" target="_blank">
-                Paper
-            </a>
-
-            <a class="button" href="#" target="_blank">
-                Code
-            </a>
-
-        </div>
 
     </div>
 
@@ -594,8 +582,7 @@ color:#29458F;
 
         <p class="intro-text">
 
-            M2TDiff extends our previous research on video object detection,
-            building upon two recent works published at AAAI 2025 and AAAI 2026.
+            M2TDiff is built upon our previous two conference papers (TGBFormer and MSTDiff), which are  published at AAAI 2025 and AAAI 2026.
 
         </p>
 
@@ -656,74 +643,7 @@ color:#29458F;
      VISUALIZATION
 ========================================================= -->
 
-<section>
 
-    <div class="container">
-
-        <h2 class="section-title">
-            Visualization
-        </h2>
-
-        <div class="video-grid">
-
-
-            <!-- Video 1 -->
-
-            <div>
-
-                <div class="video-box">
-
-                    <!--
-                    Upload your video to:
-                    assets/videos/demo1.mp4
-                    -->
-
-                    <video controls muted loop>
-                        <source
-                            src="assets/videos/2.mp4"
-                            type="video/mp4">
-                    </video>
-
-                </div>
-
-                <div class="video-caption">
-                    M2TDiff Visualization
-                </div>
-
-            </div>
-
-
-            <!-- Video 2 -->
-
-            <div>
-
-                <div class="video-box">
-
-                    <!--
-                    Upload your video to:
-                    assets/videos/demo2.mp4
-                    -->
-
-                    <video controls muted loop>
-                        <source
-                            src="assets/videos/3.mp4"
-                            type="video/mp4">
-                    </video>
-
-                </div>
-
-                <div class="video-caption">
-                    M2TDiff Visualization
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
 
 
 <!-- =========================================================
@@ -1111,7 +1031,77 @@ configs/r101_train_m2tdiff.sh
 
 </section>
 
+<section>
 
+    <div class="container">
+
+        <h2 class="section-title">
+            Visualization
+        </h2>
+
+        <div class="video-grid">
+
+
+            <!-- Video 1 -->
+
+            <div>
+
+                <div class="video-box">
+
+
+                    <video autoplay muted loop playsinline>
+
+                        <source
+                            src="assets/videos/2.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+
+                </div>
+
+
+                <div class="video-caption">
+                    Severe Occlusion
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <!-- Video 2 -->
+
+            <div>
+
+                <div class="video-box">
+
+
+                    <video autoplay muted loop playsinline>
+
+                        <source
+                            src="assets/videos/3.mp4"
+                            type="video/mp4">
+
+                    </video>
+
+
+                </div>
+
+
+                <div class="video-caption">
+                    Rare Poses
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
 
 <!-- =========================================================
      RESULTS
@@ -1838,7 +1828,7 @@ please consider citing:
 
 
 @inproceedings{qi2025tgbformer,
-  title={Tgbformer: Transformer-graphformer blender network for video object detection},
+  title={TGBFormer: Transformer-graphformer blender network for video object detection},
   author={Qi, Qiang and Wang, Xiao},
   booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
   volume={39},
