@@ -1,968 +1,1524 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>M2TDiff: Multi-Scale MoE-Enhanced Transformer Diffusion Network for Video Object Detection</title>
+<meta charset="UTF-8">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        html {
-            scroll-behavior: smooth;
-        }
+<title>
+M2TDiff: Multi-Scale MoE-Enhanced Transformer Diffusion Network for Video Object Detection
+</title>
 
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont,
-                         "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #222;
-            background: #ffffff;
-            line-height: 1.65;
-        }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+<style>
 
-        .container {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
 
-        /* =========================
-           Hero
-        ========================= */
+*{
+box-sizing:border-box;
+}
 
-        .hero {
-            text-align: center;
-            padding: 85px 20px 55px;
-        }
 
-        .hero h1 {
-            max-width: 950px;
-            margin: 0 auto 24px;
-            font-size: 42px;
-            line-height: 1.18;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
+body{
 
-        .authors {
-            margin-top: 18px;
-            font-size: 18px;
-            color: #444;
-        }
+margin:0;
 
-        .venue {
-            margin-top: 10px;
-            font-size: 17px;
-            font-weight: 600;
-            color: #666;
-        }
+font-family:
+Arial,
+Helvetica,
+sans-serif;
 
-        .buttons {
-            margin-top: 28px;
-        }
+color:#222;
 
-        .button {
-            display: inline-block;
-            margin: 5px 6px;
-            padding: 10px 22px;
-            border-radius: 7px;
-            background: #222;
-            color: white;
-            font-size: 15px;
-            transition: 0.2s;
-        }
+line-height:1.6;
 
-        .button:hover {
-            background: #555;
-        }
+}
 
-        /* =========================
-           Sections
-        ========================= */
 
-        section {
-            padding: 65px 0;
-        }
+.container{
 
-        section:nth-child(even) {
-            background: #fafafa;
-        }
+max-width:1100px;
 
-        .section-title {
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 35px;
-            font-weight: 700;
-        }
+margin:auto;
 
-        .section-text {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 16px;
-            color: #444;
-            text-align: justify;
-        }
+padding:0 25px;
 
-        /* =========================
-           Previous Works
-        ========================= */
+}
 
-        .intro-text {
-            max-width: 850px;
-            margin: 0 auto 35px;
-            text-align: center;
-            color: #555;
-            font-size: 16px;
-        }
 
-        .paper-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            max-width: 900px;
-            margin: auto;
-        }
 
-        .paper-card {
-            padding: 28px;
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            transition: 0.2s;
-        }
+.hero{
 
-        .paper-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-        }
+text-align:center;
 
-        .paper-year {
-            font-size: 14px;
-            font-weight: 700;
-            color: #777;
-            margin-bottom: 10px;
-        }
+padding:80px 20px 50px;
 
-        .paper-card h3 {
-            margin: 0 0 12px;
-            font-size: 20px;
-            line-height: 1.35;
-        }
+}
 
-        .paper-card p {
-            margin: 0;
-            font-size: 14px;
-            color: #666;
-        }
 
-        /* =========================
-           Research Roadmap
-        ========================= */
 
-        .roadmap {
-            text-align: center;
-            margin-top: 40px;
-            font-weight: 600;
-            font-size: 17px;
-        }
+.hero h1{
 
-        .roadmap span {
-            margin: 0 12px;
-            color: #aaa;
-        }
+font-size:42px;
 
-        /* =========================
-           Videos
-        ========================= */
+line-height:1.25;
 
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
+max-width:1000px;
 
-        .video-box {
-            background: #000;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+margin:auto;
 
-        .video-box video {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
+}
 
-        .video-caption {
-            background: #f7f7f7;
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            color: #555;
-        }
 
-        /* =========================
-           Method
-        ========================= */
 
-        .method-image {
-            max-width: 100%;
-            display: block;
-            margin: 0 auto 28px;
-            border-radius: 8px;
-        }
+.authors{
 
-        .image-placeholder {
-            width: 100%;
-            min-height: 350px;
-            border: 2px dashed #d5d5d5;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            background: #fafafa;
-            margin-bottom: 30px;
-        }
+font-size:18px;
 
-        /* =========================
-           Code
-        ========================= */
+margin-top:20px;
 
-        .code-block {
-            max-width: 900px;
-            margin: 20px auto;
-            background: #181818;
-            color: #f1f1f1;
-            border-radius: 9px;
-            padding: 22px 25px;
-            overflow-x: auto;
-            font-family: Consolas, Monaco, monospace;
-            font-size: 14px;
-            line-height: 1.6;
-        }
+}
 
-        /* =========================
-           Results
-        ========================= */
 
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            max-width: 900px;
-            margin: auto;
-        }
 
-        .result-card {
-            text-align: center;
-            background: white;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 28px 15px;
-        }
+.venue{
 
-        .result-card h3 {
-            margin: 0 0 15px;
-            font-size: 19px;
-        }
+margin-top:12px;
 
-        .result-number {
-            font-size: 30px;
-            font-weight: 700;
-        }
+font-size:17px;
 
-        .result-label {
-            font-size: 13px;
-            color: #888;
-        }
+font-weight:600;
 
-        .result-note {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 14px;
-            color: #777;
-        }
+color:#666;
 
-        /* =========================
-           Citation
-        ========================= */
+}
 
-        .citation {
-            max-width: 900px;
-            margin: auto;
-        }
 
-        .citation pre {
-            background: #181818;
-            color: #f1f1f1;
-            padding: 25px;
-            border-radius: 9px;
-            overflow-x: auto;
-            font-size: 13px;
-            line-height: 1.55;
-        }
 
-        /* =========================
-           Footer
-        ========================= */
+.buttons{
 
-        footer {
-            text-align: center;
-            padding: 35px 20px;
-            color: #888;
-            font-size: 14px;
-            border-top: 1px solid #eee;
-        }
+margin-top:30px;
 
-        /* =========================
-           Mobile
-        ========================= */
+}
 
-        @media (max-width: 750px) {
 
-            .hero {
-                padding-top: 55px;
-            }
+.button{
 
-            .hero h1 {
-                font-size: 30px;
-            }
+background:#222;
 
-            .paper-grid,
-            .video-grid,
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
+color:white;
 
-            section {
-                padding: 45px 0;
-            }
+padding:10px 25px;
 
-            .section-title {
-                font-size: 26px;
-            }
-        }
-    </style>
+border-radius:8px;
+
+margin:5px;
+
+display:inline-block;
+
+}
+
+
+
+section{
+
+padding:60px 0;
+
+}
+
+
+
+section:nth-child(even){
+
+background:#fafafa;
+
+}
+
+
+
+.section-title{
+
+text-align:center;
+
+font-size:32px;
+
+margin-bottom:35px;
+
+}
+
+
+
+.section-text{
+
+max-width:900px;
+
+margin:auto;
+
+text-align:justify;
+
+font-size:16px;
+
+}
+
+
+
+.paper-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+}
+
+
+
+.paper-card{
+
+padding:25px;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+background:white;
+
+}
+
+
+
+.paper-year{
+
+font-weight:bold;
+
+color:#777;
+
+}
+
+
+
+.paper-card h3{
+
+font-size:21px;
+
+}
+
+
+
+.video-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+}
+
+
+
+.video-box{
+
+background:black;
+
+border-radius:10px;
+
+overflow:hidden;
+
+}
+
+
+
+.video-box video{
+
+width:100%;
+
+}
+
+
+
+.video-caption{
+
+text-align:center;
+
+padding:10px;
+
+}
+
+
+
+.method-image{
+
+width:100%;
+
+max-width:1000px;
+
+display:block;
+
+margin:auto;
+
+border-radius:10px;
+
+}
+
+
+
+.code-block{
+
+max-width:900px;
+
+margin:25px auto;
+
+background:#181818;
+
+color:white;
+
+padding:20px;
+
+border-radius:10px;
+
+overflow:auto;
+
+font-family:monospace;
+
+}
+
+
+
+.results-grid{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:20px;
+
+}
+
+
+
+.result-card{
+
+text-align:center;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+padding:25px;
+
+}
+
+
+
+.result-number{
+
+font-size:32px;
+
+font-weight:bold;
+
+}
+
+
+
+.citation pre{
+
+background:#181818;
+
+color:white;
+
+padding:25px;
+
+border-radius:10px;
+
+overflow:auto;
+
+}
+
+
+
+@media(max-width:800px){
+
+.paper-grid,
+.video-grid,
+.results-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+.hero h1{
+
+font-size:30px;
+
+}
+
+}
+
+
+</style>
+
+
 </head>
 
 
 <body>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+
 
 <header class="hero">
 
-    <div class="container">
 
-        <h1>
-            M2TDiff: Multi-Scale MoE-Enhanced Transformer
-            Diffusion Network for Video Object Detection
-        </h1>
+<h1>
 
-        <!-- Replace with your author names -->
-        <div class="authors">
-            <strong>Your Name</strong>,
-            Co-Author 1,
-            Co-Author 2,
-            Co-Author 3
-        </div>
+M2TDiff:
+Multi-Scale MoE-Enhanced Transformer Diffusion Network
+for Video Object Detection
 
-        <div class="venue">
-            An Extended Framework Built upon Our AAAI 2025 and AAAI 2026 Works
-        </div>
+</h1>
 
-        <div class="buttons">
 
-            <!-- Replace these links later -->
-            <a class="button" href="#" target="_blank">
-                Paper
-            </a>
 
-            <a class="button" href="#" target="_blank">
-                Code
-            </a>
+<div class="authors">
 
-        </div>
+Your Name, Co-Authors
 
-    </div>
+</div>
+
+
+
+<div class="venue">
+
+An Extended Framework Built upon Our AAAI 2025 and AAAI 2026 Works
+
+</div>
+
+
+
+<div class="buttons">
+
+<a class="button" href="#">
+Paper
+</a>
+
+
+<a class="button" href="#">
+Code
+</a>
+
+
+</div>
+
 
 </header>
 
 
-<!-- =========================================================
-     PREVIOUS WORKS
-========================================================= -->
+
+
+
+<!-- Previous Works -->
+
 
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            From Previous Works to M2TDiff
-        </h2>
-
-        <p class="intro-text">
-
-            M2TDiff extends our previous research on video object detection,
-            building upon two recent works published at AAAI 2025 and AAAI 2026.
-
-        </p>
+<div class="container">
 
 
-        <div class="paper-grid">
+<h2 class="section-title">
 
-            <!-- AAAI 2025 -->
+From Previous Works to M2TDiff
 
-            <div class="paper-card">
-
-                <div class="paper-year">
-                    AAAI 2025
-                </div>
-
-                <h3>
-                    TGBFormer: Transformer-GraphFormer Blender Network
-                    for Video Object Detection
-                </h3>
-
-                <p>
-                    Our AAAI 2025 work explores transformer and graph-based
-                    feature interaction for video object detection.
-                </p>
-
-            </div>
+</h2>
 
 
-            <!-- AAAI 2026 -->
 
-            <div class="paper-card">
+<p class="section-text">
 
-                <div class="paper-year">
-                    AAAI 2026
-                </div>
+M2TDiff extends our previous research on video object detection,
+building upon TGBFormer (AAAI 2025) and MSTDiff (AAAI 2026).
 
-                <h3>
-                    MSTDiff: Multiscale-Aware Transformer Diffusion Network
-                    for Video Object Detection
-                </h3>
-
-                <p>
-                    Our AAAI 2026 work introduces diffusion-based object
-                    query modeling with multiscale-aware transformer
-                    representations.
-                </p>
-
-            </div>
-
-        </div>
+</p>
 
 
-    </div>
+
+<br>
+
+
+
+<div class="paper-grid">
+
+
+
+<div class="paper-card">
+
+
+<div class="paper-year">
+
+AAAI 2025
+
+</div>
+
+
+<h3>
+
+TGBFormer:
+Transformer-GraphFormer Blender Network
+for Video Object Detection
+
+</h3>
+
+
+<p>
+
+Our AAAI 2025 work explores transformer and graph-based
+feature interaction for video object detection.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="paper-card">
+
+
+<div class="paper-year">
+
+AAAI 2026
+
+</div>
+
+
+<h3>
+
+MSTDiff:
+Multiscale-Aware Transformer Diffusion Network
+for Video Object Detection
+
+</h3>
+
+
+<p>
+
+Our AAAI 2026 work introduces diffusion-based object query
+generation with multiscale-aware transformer representations.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<h3 style="text-align:center;margin-top:40px">
+
+
+TGBFormer
+
+&nbsp; →
+
+&nbsp;
+
+MSTDiff
+
+&nbsp; →
+
+&nbsp;
+
+<strong>M2TDiff</strong>
+
+
+</h3>
+
+
+</div>
+
 
 </section>
 
 
-<!-- =========================================================
-     VISUALIZATION
-========================================================= -->
+
+
+
+<!-- Visualization -->
+
 
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Visualization
-        </h2>
-
-        <div class="video-grid">
+<div class="container">
 
 
-            <!-- Video 1 -->
+<h2 class="section-title">
 
-            <div>
+Visualization
 
-                <div class="video-box">
-
-                    <!--
-                    Upload your video to:
-                    assets/videos/demo1.mp4
-                    -->
-
-                    <video controls muted loop>
-                        <source
-                            src="assets/videos/2.mp4"
-                            type="video/mp4">
-                    </video>
-
-                </div>
-
-                <div class="video-caption">
-                    M2TDiff Visualization
-                </div>
-
-            </div>
+</h2>
 
 
-            <!-- Video 2 -->
-
-            <div>
-
-                <div class="video-box">
-
-                    <!--
-                    Upload your video to:
-                    assets/videos/demo2.mp4
-                    -->
-
-                    <video controls muted loop>
-                        <source
-                            src="assets/videos/3.mp4"
-                            type="video/mp4">
-                    </video>
-
-                </div>
-
-                <div class="video-caption">
-                    M2TDiff Visualization
-                </div>
-
-            </div>
 
 
-        </div>
+<div class="video-grid">
 
-    </div>
+
+
+<div>
+
+
+<div class="video-box">
+
+
+<video controls>
+
+<source
+src="assets/videos/demo1.mp4"
+type="video/mp4">
+
+</video>
+
+
+</div>
+
+
+<div class="video-caption">
+
+M2TDiff Visualization
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div>
+
+
+<div class="video-box">
+
+
+<video controls>
+
+
+<source
+src="assets/videos/demo2.mp4"
+type="video/mp4">
+
+
+</video>
+
+
+</div>
+
+
+<div class="video-caption">
+
+M2TDiff Visualization
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
 
 
-<!-- =========================================================
-     ABSTRACT
-========================================================= -->
+
+
+
+
+<!-- Abstract -->
+
 
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Abstract
-        </h2>
+<div class="container">
 
-        <div class="section-text">
 
-            <p>
-                Video object detection is a pivotal yet challenging task in
-                computer vision. In recent years, DETR-based methods have
-                gained prominence in this domain owing to their powerful
-                global modeling capability. However, these methods are
-                usually confronted with three crucial limitations:
-                frame-agnostic object query initialization, scale-agnostic
-                attention mechanism and heterogeneity-agnostic feature
-                transformation, which hinder their capability to capture
-                dynamic appearance variations and model cross-frame
-                temporal dependencies.
-                To alleviate these limitations, we propose a novel
-                Multi-scale MoE-enhanced Transformer Diffusion (M2TDiff)
-                network for video object detection, including three core
-                technical improvements over existing methods. First, we
-                introduce a reinforcement-guided diffusion query generator,
-                which models the object query distribution through an
-                iterative diffusion process conditioned on input frames
-                and optimized using a multi-trajectory reinforcement
-                learning strategy, generating adaptive and content-aware
-                object queries.
-                Second, we design a multi-scale graph interaction transformer
-                encoder, which combines multi-head attention mechanisms with
-                multi-scale dynamic graph convolutions to learn scale-aware
-                feature representations while jointly modeling local and
-                global contextual dependencies.
-                Third, we develop a sparsely-gated mixture-of-experts
-                transformer decoder, which dynamically routes heterogeneous
-                object queries to specialized experts through sparse gating,
-                enabling query-specific representation learning.
-                Furthermore, we present two variants of M2TDiff, termed
-                M2TDiff++ and M2TDiff-Fast, which further improve detection
-                accuracy by exploring more diverse spatial-temporal cues
-                and accelerate inference speed via an optimized
-                keyframe/non-keyframe processing strategy.
-                We conduct experiments on the ImageNet VID and VisDrone-VID
-                datasets and the results show that M2TDiff achieves
-                state-of-the-art performance with a favorable
-                accuracy-efficiency trade-off, while its two variants
-                further extend this frontier toward higher accuracy and
-                faster inference, respectively. Particularly, on the
-                ImageNet VID dataset, M2TDiff achieves 89.2% mAP at
-                45.2 FPS on a single 5090 GPU, M2TDiff++ reaches 94.1%
-                mAP, and M2TDiff-Fast obtains 88.5% mAP at 53.8 FPS.
-            </p>
+<h2 class="section-title">
 
-        </div>
+Abstract
 
-    </div>
+</h2>
+
+
+
+<div class="section-text">
+
+
+<p>
+
+Video object detection is a pivotal yet challenging task in
+computer vision. Recent DETR-based methods have achieved
+promising performance but still suffer from frame-agnostic
+object query initialization, scale-agnostic attention mechanism,
+and heterogeneity-agnostic feature transformation.
+
+</p>
+
+
+
+<p>
+
+To address these limitations, we propose
+<strong>M2TDiff</strong>, a Multi-scale MoE-enhanced
+Transformer Diffusion Network for video object detection.
+
+</p>
+
+
+
+<p>
+
+First, we introduce a reinforcement-guided diffusion query
+generator, which models object query distribution through an
+iterative diffusion process and generates adaptive,
+content-aware object queries.
+
+</p>
+
+
+
+<p>
+
+Second, we design a multi-scale graph interaction transformer
+encoder that combines attention mechanisms with dynamic graph
+convolutions for scale-aware feature learning.
+
+</p>
+
+
+
+<p>
+
+Third, we develop a sparsely-gated mixture-of-experts
+transformer decoder, dynamically routing heterogeneous
+object queries to specialized experts.
+
+</p>
+
+
+
+<p>
+
+Furthermore, we introduce two variants:
+<strong>M2TDiff++</strong> for higher accuracy and
+<strong>M2TDiff-Fast</strong> for efficient inference.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
 
 
-<!-- =========================================================
-     METHOD
-========================================================= -->
+
+
+
+<!-- Method -->
+
 
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Method
-        </h2>
+<div class="container">
 
 
-        <!--
-        Upload your framework figure to:
-        assets/images/m2tdiff_framework.png
+<h2 class="section-title">
 
-        Then replace the placeholder below with:
+Method
 
-        <img
-            class="method-image"
-            src="assets/images/m2tdiff_framework.png"
-            alt="M2TDiff Framework">
-        -->
+</h2>
 
-     
-        <img
-            class="method-image"
-            src="assets/images/m2tdiff_framework.png"
-            alt="M2TDiff Framework">
 
-        <div class="section-text">
 
-            <p>
-                <strong>Overview.</strong>
-                M2TDiff is a multi-scale MoE-enhanced transformer diffusion
-                network designed for video object detection. The framework
-                progressively improves object query generation, multi-scale
-                feature interaction, and query-specific representation
-                learning.
-            </p>
+<img
 
-            <p>
-                <strong>Reinforcement-Guided Diffusion Query Generator.</strong>
-                We introduce a diffusion-based query generation mechanism
-                that produces adaptive and content-aware object queries
-                conditioned on input frames. A multi-trajectory reinforcement
-                learning strategy further guides the diffusion process.
-            </p>
+class="method-image"
 
-            <p>
-                <strong>Multi-Scale Graph Interaction Transformer Encoder.</strong>
-                The encoder integrates multi-head attention with multi-scale
-                dynamic graph convolution to jointly capture local and global
-                contextual dependencies.
-            </p>
+src="assets/images/m2tdiff_framework.png"
 
-            <p>
-                <strong>Sparsely-Gated Mixture-of-Experts Decoder.</strong>
-                The decoder dynamically routes heterogeneous object queries
-                to specialized experts, enabling query-specific feature
-                transformation.
-            </p>
+alt="M2TDiff Framework"
 
-        </div>
+>
 
-    </div>
+
+
+
+<div class="section-text">
+
+
+<p>
+
+<strong>Reinforcement-Guided Diffusion Query Generator.</strong>
+Generates adaptive object queries through diffusion modeling
+with multi-trajectory reinforcement learning.
+
+</p>
+
+
+<p>
+
+<strong>Multi-Scale Graph Interaction Transformer Encoder.</strong>
+Learns scale-aware representations by integrating attention
+and dynamic graph interaction.
+
+</p>
+
+
+<p>
+
+<strong>Sparsely-Gated MoE Transformer Decoder.</strong>
+Routes heterogeneous queries to specialized experts for
+query-specific representation learning.
+
+</p>
+
+
+</div>
+
+
+</div>
+
 
 </section>
+<!-- =========================================================
+     VARIANTS
+========================================================= -->
+
+
+<section>
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Variants
+
+</h2>
+
+
+
+<div class="paper-grid">
+
+
+
+<div class="paper-card">
+
+
+<div class="paper-year">
+
+M2TDiff++
+
+</div>
+
+
+<h3>
+
+Higher Accuracy Variant
+
+</h3>
+
+
+<p>
+
+M2TDiff++ further improves detection accuracy by exploring
+more diverse spatial-temporal cues and enhancing object query
+generation with improved temporal information aggregation.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="paper-card">
+
+
+<div class="paper-year">
+
+M2TDiff-Fast
+
+</div>
+
+
+<h3>
+
+Efficient Inference Variant
+
+</h3>
+
+
+<p>
+
+M2TDiff-Fast accelerates inference through an optimized
+keyframe/non-keyframe processing strategy while maintaining
+competitive detection performance.
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+     REQUIREMENTS
+========================================================= -->
+
+
+<section>
+
+
+<div class="container">
+
+
+<h2 class="section-title">
+
+Requirements
+
+</h2>
+
+
+
+<div class="section-text">
+
+
+<p>
+
+The code is tested with the following environment:
+
+</p>
+
+
+
+<ul>
+
+
+<li>
+Linux, CUDA >= 11.0, GCC >= 5.4
+</li>
+
+
+<li>
+Python >= 3.8
+</li>
+
+
+</ul>
+
+
+
+<p>
+
+We recommend using Anaconda to create a conda environment:
+
+</p>
+
+
+
+</div>
+
+
+
+<div class="code-block">
+
+
+<pre>
+
+conda create -n M2TDiff python=3.8 pip
+
+conda activate M2TDiff
+
+</pre>
+
+
+</div>
+
+
+
+
+
+<div class="section-text">
+
+
+<p>
+
+Install PyTorch and torchvision according to your CUDA version.
+
+For example:
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="code-block">
+
+
+<pre>
+
+conda install pytorch torchvision 
+-c pytorch
+
+</pre>
+
+
+</div>
+
+
+
+
+
+
+<div class="section-text">
+
+
+<p>
+
+Install other dependencies:
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="code-block">
+
+
+<pre>
+
+pip install -r requirements.txt
+
+</pre>
+
+
+</div>
+
+
+
+
+
+
+<div class="section-text">
+
+
+<p>
+
+Build MultiScaleDeformableAttention:
+
+</p>
+
+
+</div>
+
+
+
+
+<div class="code-block">
+
+
+<pre>
+
+cd ./models/ops
+
+sh ./make.sh
+
+</pre>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
 
 
 <!-- =========================================================
      TRAINING
 ========================================================= -->
 
+
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Training
-        </h2>
-
-        <div class="section-text">
-
-            <p>
-                Please follow the steps below to train M2TDiff.
-            </p>
-
-        </div>
+<div class="container">
 
 
-        <div class="code-block">
+<h2 class="section-title">
+
+Training
+
+</h2>
+
+
+
+<div class="section-text">
+
+
+<p>
+
+We use ResNet-50 and ResNet-101 as backbone networks.
+The following commands are used to train M2TDiff.
+
+</p>
+
+
+
+<p>
+
+<strong>
+Training on single node:
+</strong>
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="code-block">
+
+
 <pre>
-# Clone the repository
-git clone https://github.com/gold-research/M2TDiff.git
 
-cd M2TDiff
 
-# Create environment
-conda create -n m2tdiff python=3.9
-conda activate m2tdiff
+# Train M2TDiff with ResNet-50 backbone
 
-# Install dependencies
-pip install -r requirements.txt
 
-# Train M2TDiff
-python train.py \
-    --config configs/m2tdiff.yaml
+GPUS_PER_NODE=8 \
+./tools/run_dist_launch.sh \
+$1 r50 $2 configs/r50_train_m2tdiff.sh
+
+
+
+
+
+# Train M2TDiff with ResNet-101 backbone
+
+
+GPUS_PER_NODE=8 \
+./tools/run_dist_launch.sh \
+$1 r101 $2 configs/r101_train_m2tdiff.sh
+
+
+
 </pre>
-        </div>
 
-    </div>
+
+</div>
+
+
+
+
+
+
+<div class="section-text">
+
+
+<p>
+
+
+<strong>
+Training on Slurm cluster:
+</strong>
+
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="code-block">
+
+
+<pre>
+
+
+GPUS_PER_NODE=8 \
+./tools/run_dist_slurm.sh \
+&lt;partition&gt; r101 8 \
+configs/r101_train_m2tdiff.sh
+
+
+</pre>
+
+
+</div>
+
+
+
+
+</div>
+
 
 </section>
 
 
-<!-- =========================================================
-     TESTING
-========================================================= -->
-
-<section>
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Testing
-        </h2>
-
-        <div class="section-text">
-
-            <p>
-                To evaluate a trained M2TDiff model, use the following
-                command.
-            </p>
-
-        </div>
 
 
-        <div class="code-block">
-<pre>
-# Evaluate M2TDiff
-
-python test.py \
-    --config configs/m2tdiff.yaml \
-    --checkpoint path/to/checkpoint.pth
-</pre>
-        </div>
 
 
-        <div class="section-text">
-
-            <p>
-                For video demonstration, you can run:
-            </p>
-
-        </div>
-
-
-        <div class="code-block">
-<pre>
-# Run video demo
-
-python demo.py \
-    --config configs/m2tdiff.yaml \
-    --input path/to/video
-</pre>
-        </div>
-
-    </div>
-
-</section>
 
 
 <!-- =========================================================
      RESULTS
 ========================================================= -->
 
+
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Results
-        </h2>
+<div class="container">
 
 
-        <div class="results-grid">
+<h2 class="section-title">
+
+Results
+
+</h2>
 
 
-            <!-- M2TDiff -->
-
-            <div class="result-card">
-
-                <h3>
-                    M2TDiff
-                </h3>
-
-                <div class="result-number">
-                    89.2%
-                </div>
-
-                <div class="result-label">
-                    mAP
-                </div>
-
-                <br>
-
-                <div class="result-number">
-                    45.2
-                </div>
-
-                <div class="result-label">
-                    FPS
-                </div>
-
-            </div>
 
 
-            <!-- M2TDiff++ -->
 
-            <div class="result-card">
-
-                <h3>
-                    M2TDiff++
-                </h3>
-
-                <div class="result-number">
-                    94.1%
-                </div>
-
-                <div class="result-label">
-                    mAP
-                </div>
-
-            </div>
+<div class="results-grid">
 
 
-            <!-- M2TDiff-Fast -->
-
-            <div class="result-card">
-
-                <h3>
-                    M2TDiff-Fast
-                </h3>
-
-                <div class="result-number">
-                    88.5%
-                </div>
-
-                <div class="result-label">
-                    mAP
-                </div>
-
-                <br>
-
-                <div class="result-number">
-                    53.8
-                </div>
-
-                <div class="result-label">
-                    FPS
-                </div>
-
-            </div>
 
 
-        </div>
+
+<div class="result-card">
 
 
-        <div class="result-note">
+<h3>
 
-            Results on ImageNet VID using a single NVIDIA RTX 5090 GPU.
+M2TDiff
 
-        </div>
+</h3>
 
-    </div>
+
+<div class="result-number">
+
+89.2%
+
+</div>
+
+
+<p>
+
+mAP
+
+</p>
+
+
+
+<div class="result-number">
+
+45.2
+
+</div>
+
+
+<p>
+
+FPS
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="result-card">
+
+
+<h3>
+
+M2TDiff++
+
+</h3>
+
+
+<div class="result-number">
+
+94.1%
+
+</div>
+
+
+<p>
+
+mAP
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="result-card">
+
+
+<h3>
+
+M2TDiff-Fast
+
+</h3>
+
+
+<div class="result-number">
+
+88.5%
+
+</div>
+
+
+<p>
+
+mAP
+
+</p>
+
+
+
+<div class="result-number">
+
+53.8
+
+</div>
+
+
+<p>
+
+FPS
+
+</p>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<p style="text-align:center;color:#777;margin-top:30px">
+
+
+Results on ImageNet VID using a single NVIDIA RTX 5090 GPU.
+
+
+</p>
+
+
+
+
+</div>
+
 
 </section>
+
+
+
+
+
+
 
 
 <!-- =========================================================
      CITATION
 ========================================================= -->
 
+
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Citation
-        </h2>
+<div class="container">
 
-        <div class="citation">
 
-            <p class="section-text">
+<h2 class="section-title">
 
-                If you find M2TDiff useful for your research,
-                please consider citing our works:
+Citing M2TDiff
 
-            </p>
+</h2>
+
+
+
+
+<div class="citation">
+
+
+<p class="section-text">
+
+
+If you find M2TDiff useful in your research,
+please consider citing:
+
+
+</p>
+
+
+
 
 
 <pre>
+
+
 @inproceedings{tgbformer2025,
-  title     = {TGBFormer: Transformer-GraphFormer Blender Network
-               for Video Object Detection},
-  author    = {Your Name and Co-Authors},
-  booktitle = {Proceedings of the AAAI Conference
-               on Artificial Intelligence},
-  year      = {2025}
+
+title={TGBFormer: Transformer-GraphFormer Blender Network
+for Video Object Detection},
+
+author={Your Name and Co-Authors},
+
+booktitle={Proceedings of the AAAI Conference
+on Artificial Intelligence},
+
+year={2025}
+
 }
+
+
+
+
 
 @inproceedings{mstdiff2026,
-  title     = {MSTDiff: Multiscale-Aware Transformer Diffusion
-               Network for Video Object Detection},
-  author    = {Your Name and Co-Authors},
-  booktitle = {Proceedings of the AAAI Conference
-               on Artificial Intelligence},
-  year      = {2026}
+
+title={MSTDiff: Multiscale-Aware Transformer Diffusion Network
+for Video Object Detection},
+
+author={Your Name and Co-Authors},
+
+booktitle={Proceedings of the AAAI Conference
+on Artificial Intelligence},
+
+year={2026}
+
 }
 
-@inproceedings{m2tdiff,
-  title     = {M2TDiff: Multi-Scale MoE-Enhanced Transformer
-               Diffusion Network for Video Object Detection},
-  author    = {Your Name and Co-Authors},
-  booktitle = {Conference},
-  year      = {2026}
+
+
+
+
+@inproceedings{m2tdiff2026,
+
+title={M2TDiff: Multi-Scale MoE-Enhanced Transformer
+Diffusion Network for Video Object Detection},
+
+author={Your Name and Co-Authors},
+
+booktitle={Proceedings of the AAAI Conference
+on Artificial Intelligence},
+
+year={2026}
+
 }
 </pre>
 
-        </div>
 
-    </div>
+</div>
+
+
+</div>
 
 </section>
 
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
 <footer>
 
-    M2TDiff © 2026
+
+M2TDiff © 2026
+
 
 </footer>
 
 
+
+
 </body>
+
+
 </html>
-```
