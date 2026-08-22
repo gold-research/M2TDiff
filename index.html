@@ -293,6 +293,118 @@
             color: #777;
         }
 
+               .ablation-grid{
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+gap:20px;
+
+}
+
+
+
+.ablation-card{
+
+padding:25px 15px;
+
+border-radius:0px;
+
+text-align:center;
+
+border:1px solid #ddd;
+
+}
+
+
+
+.ablation-card h3{
+
+font-size:22px;
+
+margin-bottom:15px;
+
+}
+
+
+
+.ablation-value{
+
+font-size:30px;
+
+font-weight:bold;
+
+margin-top:10px;
+
+}
+
+
+
+.ablation-label{
+
+font-size:15px;
+
+margin-top:5px;
+
+color:#555;
+
+}
+
+
+/* 五种颜色 */
+
+.baseline{
+
+background:#F1F3F6;
+
+color:#263238;
+
+}
+
+
+.rdqg{
+
+background:#DCEBFF;
+
+color:#2450B8;
+
+}
+
+
+.mgte{
+
+background:#D7F5E8;
+
+color:#087A5B;
+
+}
+
+
+.smtd{
+
+background:#FDE7D2;
+
+color:#C65B0A;
+
+}
+
+
+.full{
+
+background:#29458F;
+
+color:white;
+
+}
+
+
+.full .ablation-label{
+
+color:white;
+
+}
+
         /* =========================
            Citation
         ========================= */
@@ -939,103 +1051,222 @@ configs/r101_train_m2tdiff.sh
 
 <section>
 
-    <div class="container">
-
-        <h2 class="section-title">
-            Results
-        </h2>
+<div class="container">
 
 
-        <div class="results-grid">
+<h2 class="section-title">
+    Results
+</h2>
 
 
-            <!-- M2TDiff -->
 
-            <div class="result-card">
-
-                <h3>
-                    M2TDiff
-                </h3>
-
-                <div class="result-number">
-                    89.2%
-                </div>
-
-                <div class="result-label">
-                    mAP
-                </div>
-
-                <br>
-
-                <div class="result-number">
-                    45.2
-                </div>
-
-                <div class="result-label">
-                    FPS
-                </div>
-
-            </div>
+<div class="ablation-grid">
 
 
-            <!-- M2TDiff++ -->
 
-            <div class="result-card">
+<!-- Baseline -->
 
-                <h3>
-                    M2TDiff++
-                </h3>
-
-                <div class="result-number">
-                    94.1%
-                </div>
-
-                <div class="result-label">
-                    mAP
-                </div>
-
-            </div>
+<div class="ablation-card baseline">
 
 
-            <!-- M2TDiff-Fast -->
-
-            <div class="result-card">
-
-                <h3>
-                    M2TDiff-Fast
-                </h3>
-
-                <div class="result-number">
-                    88.5%
-                </div>
-
-                <div class="result-label">
-                    mAP
-                </div>
-
-                <br>
-
-                <div class="result-number">
-                    53.8
-                </div>
-
-                <div class="result-label">
-                    FPS
-                </div>
-
-            </div>
+<h3>
+Baseline
+</h3>
 
 
-        </div>
+<div class="ablation-value">
+78.5
+</div>
 
 
-        <div class="result-note">
+<div class="ablation-label">
+mAP (%)
+</div>
 
-            Results on ImageNet VID using a single NVIDIA RTX 5090 GPU.
 
-        </div>
 
-    </div>
+<div class="ablation-value">
+82.4
+</div>
+
+
+<div class="ablation-label">
+mAP<sup>★</sup> (%)
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- RDQG -->
+
+<div class="ablation-card rdqg">
+
+
+<h3>
++ RDQG
+</h3>
+
+
+<div class="ablation-value">
+81.7
+</div>
+
+
+<div class="ablation-label">
+mAP (%)
+</div>
+
+
+
+<div class="ablation-value">
+85.9
+</div>
+
+
+<div class="ablation-label">
+mAP<sup>★</sup> (%)
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- MGTE -->
+
+<div class="ablation-card mgte">
+
+
+<h3>
++ MGTE
+</h3>
+
+
+<div class="ablation-value">
+83.1
+</div>
+
+
+<div class="ablation-label">
+mAP (%)
+</div>
+
+
+
+<div class="ablation-value">
+87.6
+</div>
+
+
+<div class="ablation-label">
+mAP<sup>★</sup> (%)
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- SMTD -->
+
+<div class="ablation-card smtd">
+
+
+<h3>
++ SMTD
+</h3>
+
+
+<div class="ablation-value">
+81.3
+</div>
+
+
+<div class="ablation-label">
+mAP (%)
+</div>
+
+
+
+<div class="ablation-value">
+84.9
+</div>
+
+
+<div class="ablation-label">
+mAP<sup>★</sup> (%)
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- Full -->
+
+<div class="ablation-card full">
+
+
+<h3>
+Full Model
+</h3>
+
+
+<div class="ablation-value">
+89.2
+</div>
+
+
+<div class="ablation-label">
+mAP (%)
+</div>
+
+
+
+<div class="ablation-value">
+93.0
+</div>
+
+
+<div class="ablation-label">
+mAP<sup>★</sup> (%)
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+<div class="result-note">
+
+Ablation results on ImageNet VID.
+The full M2TDiff model achieves the best performance
+by integrating RDQG, MGTE, and SMTD.
+
+</div>
+
+
+
+</div>
+
 
 </section>
 
