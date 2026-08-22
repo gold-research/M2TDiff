@@ -939,10 +939,114 @@ sh ./make.sh
 </section>
 
 
+       <!-- =========================================================
+     DATASET PREPARATION
+========================================================= -->
+
+
+<section>
+<div class="container">
+<h2 class="section-title">
+Dataset Preparation
+
+</h2>
+<div class="section-text">
+<p>
+
+M2TDiff is evaluated on two widely used video object detection
+benchmarks, including
+
+<a href="https://image-net.org/challenges/LSVRC/2015/2015-downloads"
+target="_blank">
+
+<strong>ImageNet VID</strong>
+
+</a>
+
+and
+
+<a href="https://github.com/VisDrone/VisDrone-Dataset"
+target="_blank">
+
+<strong>VisDrone-VID</strong>
+
+</a>.
+
+</p>
+<p>
+
+Please download the datasets from their official websites and
+organize the files according to the following structure.
+
+</p>
+
+</div>
+
+<h3>
+
+ImageNet VID
+
+</h3>
+<div class="code-block">
+
+<pre>
+
+code_root/
+└── datasets/
+    └── imagenet_vid/
+        ├── Data/
+        │   └── VID/
+        │       ├── train/
+        │       └── val/
+        │
+        └── annotations/
+            ├── imagenet_vid_train.json
+            └── imagenet_vid_val.json
+
+</pre>
+
+</div>
+<h3>
+
+VisDrone-VID
+
+</h3>
+<div class="code-block">
+
+<pre>
+
+code_root/
+└── datasets/
+    └── visdrone_vid/
+        ├── Data/
+        │   └── sequences/
+        │       ├── train/
+        │       └── val/
+        │
+        └── annotations/
+            ├── visdrone_vid_train.json
+            └── visdrone_vid_val.json
+
+</pre>
+
+</div>
+<div class="section-text">
+<p>
+
+After downloading and processing the datasets, we recommend creating
+symbolic links to the dataset directories under
+<strong>datasets/</strong>.
+</p>
+</div>
+</div>
+</section>
+
+
 <!-- =========================================================
      TRAINING
 ========================================================= -->
 
+ 
 <section>
 
 
