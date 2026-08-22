@@ -845,101 +845,92 @@ sh ./make.sh
 
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Training
-        </h2>
-
-        <div class="section-text">
-
-            <p>
-                Please follow the steps below to train M2TDiff.
-            </p>
-
-        </div>
+<div class="container">
 
 
-        <div class="code-block">
+<h2 class="section-title">
+Training
+</h2>
+
+
+
+<div class="section-text">
+
+
+<p>
+We use ResNet-50 and ResNet-101 as the backbone networks.
+The following commands are used to train M2TDiff.
+</p>
+
+
+<p>
+<strong>Training on a single node:</strong>
+</p>
+
+
+</div>
+
+
+
+<div class="code-block">
+
 <pre>
-# Clone the repository
-git clone https://github.com/gold-research/M2TDiff.git
 
-cd M2TDiff
+# Train M2TDiff with ResNet-50 backbone
 
-# Create environment
-conda create -n m2tdiff python=3.9
-conda activate m2tdiff
+GPUS_PER_NODE=8 \
+./tools/run_dist_launch.sh \
+$1 r50 $2 configs/r50_train_m2tdiff.sh
 
-# Install dependencies
-pip install -r requirements.txt
 
-# Train M2TDiff
-python train.py \
-    --config configs/m2tdiff.yaml
+
+# Train M2TDiff with ResNet-101 backbone
+
+GPUS_PER_NODE=8 \
+./tools/run_dist_launch.sh \
+$1 r101 $2 configs/r101_train_m2tdiff.sh
+
 </pre>
-        </div>
 
-    </div>
+
+</div>
+
+
+
+<div class="section-text">
+
+
+<p>
+<strong>Training on Slurm cluster:</strong>
+</p>
+
+
+</div>
+
+
+
+<div class="code-block">
+
+<pre>
+
+GPUS_PER_NODE=8 \
+./tools/run_dist_slurm.sh \
+&lt;partition&gt; r101 8 \
+configs/r101_train_m2tdiff.sh
+
+</pre>
+
+
+</div>
+
+
+
+</div>
+
 
 </section>
 
-
-<!-- =========================================================
-     TESTING
-========================================================= -->
-
-<section>
-
-    <div class="container">
-
-        <h2 class="section-title">
-            Testing
-        </h2>
-
-        <div class="section-text">
-
-            <p>
-                To evaluate a trained M2TDiff model, use the following
-                command.
-            </p>
-
-        </div>
-
-
-        <div class="code-block">
-<pre>
-# Evaluate M2TDiff
-
-python test.py \
-    --config configs/m2tdiff.yaml \
-    --checkpoint path/to/checkpoint.pth
-</pre>
-        </div>
-
-
-        <div class="section-text">
-
-            <p>
-                For video demonstration, you can run:
-            </p>
-
-        </div>
-
-
-        <div class="code-block">
-<pre>
-# Run video demo
-
-python demo.py \
-    --config configs/m2tdiff.yaml \
-    --input path/to/video
-</pre>
-        </div>
-
-    </div>
-
-</section>
 
 
 <!-- =========================================================
@@ -1055,56 +1046,83 @@ python demo.py \
 
 <section>
 
-    <div class="container">
 
-        <h2 class="section-title">
-            Citation
-        </h2>
+<div class="container">
 
-        <div class="citation">
 
-            <p class="section-text">
+<h2 class="section-title">
+Citing M2TDiff
+</h2>
 
-                If you find M2TDiff useful for your research,
-                please consider citing our works:
 
-            </p>
+
+<div class="citation">
+
+
+<p class="section-text">
+
+If you find M2TDiff useful in your research,
+please consider citing:
+
+</p>
 
 
 <pre>
-@inproceedings{tgbformer2025,
-  title     = {TGBFormer: Transformer-GraphFormer Blender Network
-               for Video Object Detection},
-  author    = {Your Name and Co-Authors},
-  booktitle = {Proceedings of the AAAI Conference
-               on Artificial Intelligence},
-  year      = {2025}
+
+@inproceedings{m2tdiff2026,
+
+title={M2TDiff: Multi-Scale MoE-Enhanced Transformer
+Diffusion Network for Video Object Detection},
+
+author={Your Name and Co-Authors},
+
+booktitle={Proceedings of the AAAI Conference
+on Artificial Intelligence},
+
+year={2026}
+
 }
+
+
+@inproceedings{tgbformer2025,
+
+title={TGBFormer: Transformer-GraphFormer Blender Network
+for Video Object Detection},
+
+author={Your Name and Co-Authors},
+
+booktitle={Proceedings of the AAAI Conference
+on Artificial Intelligence},
+
+year={2025}
+
+}
+
 
 @inproceedings{mstdiff2026,
-  title     = {MSTDiff: Multiscale-Aware Transformer Diffusion
-               Network for Video Object Detection},
-  author    = {Your Name and Co-Authors},
-  booktitle = {Proceedings of the AAAI Conference
-               on Artificial Intelligence},
-  year      = {2026}
+
+title={MSTDiff: Multiscale-Aware Transformer Diffusion
+Network for Video Object Detection},
+
+author={Your Name and Co-Authors},
+
+booktitle={Proceedings of the AAAI Conference
+on Artificial Intelligence},
+
+year={2026}
+
 }
 
-@inproceedings{m2tdiff,
-  title     = {M2TDiff: Multi-Scale MoE-Enhanced Transformer
-               Diffusion Network for Video Object Detection},
-  author    = {Your Name and Co-Authors},
-  booktitle = {Conference},
-  year      = {2026}
-}
 </pre>
 
-        </div>
 
-    </div>
+</div>
+
+
+</div>
+
 
 </section>
-
 
 <!-- =========================================================
      FOOTER
