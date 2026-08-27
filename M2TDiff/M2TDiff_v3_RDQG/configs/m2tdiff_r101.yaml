@@ -1,0 +1,20 @@
+model:
+  num_classes: 30
+  num_queries: 100
+  hidden_dim: 256
+  num_frames: 5
+  diffusion_steps: 4
+  trajectories: 5
+  graph_k: [1, 10]
+  num_experts: 4
+  decoder_layers: 6
+train:
+  batch_size: 1
+  epochs: 12
+  lr: 0.0002
+  weight_decay: 0.0001
+  lr_drop: 10
+  device: cuda
+data:
+  root: ./data/ILSVRC
+  num_workers: 4
