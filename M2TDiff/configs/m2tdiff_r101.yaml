@@ -1,0 +1,20 @@
+model:
+  num_classes: 30
+  num_queries: 300
+  hidden_dim: 256
+  num_frames: 4
+  diffusion_steps: 4
+  trajectories: 4
+  graph_k: [8, 16]
+  num_experts: 4
+  decoder_layers: 6
+  backbone: resnet101
+train:
+  batch_size: 1
+  epochs: 12
+  lr: 0.0001
+  weight_decay: 0.0001
+  device: cuda
+data:
+  root: ./data/ILSVRC
+  num_workers: 4
