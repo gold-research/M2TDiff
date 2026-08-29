@@ -188,7 +188,7 @@ This project is developed based on the following projects, we thank the authors
 for releasing their codes:
 
 - [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR)
-- [DETR](https://github.com/facebookresearch/detr)
+
 
 ## Citing
 
