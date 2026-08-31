@@ -1,5 +1,4 @@
-This repository is an official implementation of the paper
-M2TDiff: Multi-Scale MoE-Enhanced Transformer Diffusion Network for Video Object Detection.
+This repository is an official implementation of M2TDiff.
 
 **An Extended Framework Built upon Our [AAAI 2025](https://ojs.aaai.org/index.php/AAAI/article/view/32703) and [AAAI 2026](https://ojs.aaai.org/index.php/AAAI/article/view/37798) Works**
 
