@@ -198,28 +198,27 @@ variables:
 ```bash
 USE_RDQG=0 USE_MGTE=0 USE_SMTD=0 ./tools/eval_m2tdiff.sh exps/m2tdiff/r101_A0_baseline
 ```
-### Visualization
+## Visualization
 
 <table>
 <tr>
-<td align="center">
+<td align="center" width="50%">
 
-**Severe Occlusion**
+<strong>Severe Occlusion</strong>
 
-<video src="assets/videos/2.mp4" controls muted loop width="100%"></video>
+https://github.com/user-attachments/assets/VIDEO-1-ID
 
 </td>
 
-<td align="center">
+<td align="center" width="50%">
 
-**Rare Poses**
+<strong>Rare Poses</strong>
 
-<video src="assets/videos/3.mp4" controls muted loop width="100%"></video>
+https://github.com/user-attachments/assets/VIDEO-2-ID
 
 </td>
 </tr>
 </table>
-
 
 ## Acknowledgement
 
