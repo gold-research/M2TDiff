@@ -48,12 +48,7 @@ M2TDiff-Fast obtains 88.5% mAP at 53.8 FPS.
 | M2TDiff | ResNet-101 | Deformable Detr           | **89.2** |   22.1   |
 | M2TDiff |  Swin-Base |       Deformable Detr     | **93.0** |   39.6   |
 
-Reported on the ImageNet VID validation set with 4×RTX 5090 (batch size 4);
-see [`M2TDiff_base_model.md`](M2TDiff_base_model.md) for details, VisDrone-VID
-results, and the ablation study.
 
-`ms/frame` and `FPS` are measured on the ImageNet VID validation set with
-`batch_size=1` (reported by `tools/eval_m2tdiff.sh`).
 
 ## Updates
 
