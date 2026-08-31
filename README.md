@@ -1,7 +1,9 @@
 # M2TDiff: Multi-Scale MoE-Enhanced Transformer Diffusion Network for Video Object Detection
 
 This repository is the official implementation of **M2TDiff**.
-
+<p align="center" style="color: #29458F; font-size: 18px; font-weight: 700;">
+An Extended Framework Built upon Our AAAI 2025 and AAAI 2026 Works
+</p>
 <div align="center"> <img src="assets/images/m2tdiff_framework.png" alt="M2TDiff Framework" width="100%"> </div>
 
 ## Abstract
