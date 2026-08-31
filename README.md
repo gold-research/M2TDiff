@@ -206,7 +206,7 @@ USE_RDQG=0 USE_MGTE=0 USE_SMTD=0 ./tools/eval_m2tdiff.sh exps/m2tdiff/r101_A0_ba
 
 <strong>Severe Occlusion</strong>
 
-https://github.com/user-attachments/assets/VIDEO-1-ID
+<video src="./assets/videos/2.mp4" controls width="100%"></video>
 
 </td>
 
@@ -214,7 +214,7 @@ https://github.com/user-attachments/assets/VIDEO-1-ID
 
 <strong>Rare Poses</strong>
 
-https://github.com/user-attachments/assets/VIDEO-2-ID
+<video src="./assets/videos/3.mp4" controls width="100%"></video>
 
 </td>
 </tr>
