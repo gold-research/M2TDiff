@@ -43,10 +43,10 @@ M2TDiff-Fast obtains 88.5% mAP at 53.8 FPS.
 
 ## Main Results
 
-|  Method |  Backbone  | Frame Numbers |  mAP@0.5 | ms/frame |
+|  Method |  Backbone  | Base Detector |  mAP     | Runtime(ms) |
 | :-----: | :--------: | :-----------: | :------: | :------: |
-| M2TDiff | ResNet-101 |       30      | **89.2** |   22.1   |
-| M2TDiff |  Swin-Base |       30      | **93.0** |   39.6   |
+| M2TDiff | ResNet-101 | Deformable Detr           | **89.2** |   22.1   |
+| M2TDiff |  Swin-Base |       Deformable Detr     | **93.0** |   39.6   |
 
 Reported on the ImageNet VID validation set with 4×RTX 5090 (batch size 4);
 see [`M2TDiff_base_model.md`](M2TDiff_base_model.md) for details, VisDrone-VID
