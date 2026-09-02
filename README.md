@@ -108,7 +108,7 @@ The expected directory structure is:
 code_root/
 └── datasets/
     └── imagenet_vid/
-        ├──ImageSets/
+        ├── ImageSets/
         ├── Data/
         │   └── DET/
         │   └── VID/   
