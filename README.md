@@ -101,7 +101,6 @@ M2TDiff is evaluated on the widely used video object detection benchmark, **Imag
 
 Download the ILSVRC2015 DET and ILSVRC2015 VID datasets from
 [the official website](https://image-net.org/challenges/LSVRC/2015/2015-downloads).
-
 The expected directory structure is:
 
 ```text
