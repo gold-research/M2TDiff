@@ -104,8 +104,9 @@ code_root/
         │       └── val/
         │
         └── annotations/
-            ├── imagenet_vid_train.json
-            └── imagenet_vid_val.json
+        │   └── VID/
+        │       ├── train/
+        │       └── val/
 ```
 
 #### VisDrone-VID
@@ -176,6 +177,13 @@ variables:
 ```bash
 USE_RDQG=0 USE_MGTE=0 USE_SMTD=0 ./tools/eval_m2tdiff.sh exps/m2tdiff/r101_A0_baseline
 ```
+## Visualization
+
+<div align="center">
+  <img src="assets/images/2.gif" alt="Visualization 1" width="48%">
+  <img src="assets/images/3.gif" alt="Visualization 2" width="48%">
+</div>
+
 
 ## Acknowledgement
 
