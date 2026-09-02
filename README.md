@@ -107,6 +107,7 @@ The expected directory structure is:
 ```text
 code_root/
 └── datasets/
+    └── ImageSets/
     └── imagenet_vid/
         ├── Data/
         │   └── DET/
