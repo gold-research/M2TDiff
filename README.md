@@ -48,7 +48,13 @@ M2TDiff-Fast obtains 88.5% mAP at 53.8 FPS.
 | M2TDiff | ResNet-101 | Deformable DETR           | **89.2** |   22.1   |
 | M2TDiff |  Swin-Base |       Deformable DETR     | **93.0** |   39.6   |
 
-
+| Method | mAP (%) | mAP★ (%) |
+| :-----: | :------: | :-------: |
+| Baseline | **78.5** | **82.4** |
+| + RDQG | **81.7** | **85.9** |
+| + MGTE | **83.1** | **87.6** |
+| + SMTD | **81.3** | **84.9** |
+| **M2TDiff** | **89.2** | **93.0** |
 
 ## Updates
 
