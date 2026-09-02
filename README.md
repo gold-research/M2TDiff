@@ -64,18 +64,13 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
 
 * Python>=3.7
 
-  We recommend using Anaconda to create a conda environment:
+  We recommend using Anaconda to create a conda environment
 
-  ```bash
-  conda create -n m2tdiff python=3.7 pip
-  conda activate m2tdiff
-  ```
+
 
 * PyTorch>=1.5.1, torchvision>=0.6.1 (following instructions [here](https://pytorch.org/))
 
-  ```bash
-  conda install pytorch=1.5.1 torchvision=0.6.1 cudatoolkit=9.2 -c pytorch
-  ```
+
 
 * Other requirements
 
@@ -83,19 +78,12 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
   pip install -r requirements.txt
   ```
 
-* Build MultiScaleDeformableAttention
-
-  ```bash
-  cd ./models/ops
-  sh ./make.sh
-  ```
 
 ## Usage
 
 ### Dataset Preparation
 
-M2TDiff is evaluated on two widely used video object detection benchmarks:
-**ImageNet VID** and **VisDrone-VID**.
+M2TDiff is evaluated on the widely used video object detection benchmark, **ImageNet VID**. To further evaluate its generalization capability, we additionally conduct experiments on **VisDrone-VID**.
 
 #### ImageNet VID
 
@@ -130,10 +118,9 @@ and organize the dataset according to the following structure:
 code_root/
 └── datasets/
     └── visdrone_vid/
-        ├── Data/
-        │   └── sequences/
-        │       ├── train/
-        │       └── val/
+        ├── sequences/
+        │   ├── train/
+        │   └── val/
         │
         └── annotations/
             ├── visdrone_vid_train.json
@@ -159,18 +146,17 @@ to place the datasets under the `datasets/` directory.
    of M2TDiff:
 
 ```bash
-GPUS_PER_NODE=8 ./tools/run_dist_launch.sh $1 r101 $2 configs/r101_train_single.sh
+GPUS_PER_NODE=4 ./tools/run_dist_launch.sh $1 r101 $2 configs/r101_train_single.sh
 ```
 
 ### Training M2TDiff
 
-Using the single-frame baseline weights (e.g.
-`./exps/singlebaseline/r101/checkpoint0009.pth`, produced by the previous step)
+Using the single-frame baseline weights 
 as the resume model:
 
 ```bash
-# single node, 8 GPUs
-GPUS_PER_NODE=8 ./tools/run_dist_launch.sh $1 r101 $2 configs/r101_train_m2tdiff.sh
+# single node, 4 GPUs
+GPUS_PER_NODE=4 ./tools/run_dist_launch.sh $1 r101 $2 configs/r101_train_m2tdiff.sh
 
 # or directly (single GPU)
 sh configs/r101_train_m2tdiff.sh
@@ -180,6 +166,8 @@ All RDQG, MGTE, and SMTD hyperparameters are exposed as `main.py` flags;
 see `configs/r101_train_m2tdiff.sh` for the recommended values.
 
 ### Evaluation
+
+Evaluate the full M2TDiff framework using the released checkpoint:
 
 ```bash
 # Evaluate the M2TDiff checkpoint
