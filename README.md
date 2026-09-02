@@ -65,7 +65,7 @@ M2TDiff-Fast obtains 88.5% mAP at 53.8 FPS.
 ## Updates
 
 * (2026/08) M2TDiff source code released.
-
+* (2026/09) M2TDiff source code  updated.
 ## Installation
 
 The codebase is built on top of [Deformable DETR](https://github.com/fundamentalvision/Deformable-DETR).
