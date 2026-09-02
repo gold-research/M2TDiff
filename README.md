@@ -116,9 +116,9 @@ code_root/
         │       └── val/
         │
         └── annotations/
-        │   └── VID/
-        │       ├── train/
-        │       └── val/
+            └── VID/
+                ├── train/
+                └── val/
 ```
 
 #### VisDrone-VID
