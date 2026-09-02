@@ -109,14 +109,13 @@ code_root/
 └── datasets/
     └── imagenet_vid/
         ├── Data/
-        │   └── VID/
-        │       ├── train/
-        │       └── val/
+        │   └── DET/
+        │   └── VID/   
         │
-        └── annotations/
+        └── Annotations/
+            └── DET/
             └── VID/
-                ├── train/
-                └── val/
+                
 ```
 
 #### VisDrone-VID
