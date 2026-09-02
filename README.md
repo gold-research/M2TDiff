@@ -45,6 +45,78 @@ M2TDiff-Fast obtains 88.5% mAP at 53.8 FPS.
 
 ### Comparison with Different Backbones
 
+<div align="center">
+
+<table>
+<tr>
+<td align="center" width="180">
+
+<b>Baseline</b><br><br>
+
+<b>78.5</b><br>
+mAP (%)<br><br>
+
+<b>82.4</b><br>
+mAP<sup>★</sup> (%)
+
+</td>
+
+<td align="center" width="180">
+
+<b>+ RDQG</b><br><br>
+
+<b>81.7</b><br>
+mAP (%)<br><br>
+
+<b>85.9</b><br>
+mAP<sup>★</sup> (%)
+
+</td>
+
+<td align="center" width="180">
+
+<b>+ MGTE</b><br><br>
+
+<b>83.1</b><br>
+mAP (%)<br><br>
+
+<b>87.6</b><br>
+mAP<sup>★</sup> (%)
+
+</td>
+
+<td align="center" width="180">
+
+<b>+ SMTD</b><br><br>
+
+<b>81.3</b><br>
+mAP (%)<br><br>
+
+<b>84.9</b><br>
+mAP<sup>★</sup> (%)
+
+</td>
+
+<td align="center" width="180">
+
+<b>Full Model</b><br><br>
+
+<b>89.2</b><br>
+mAP (%)<br><br>
+
+<b>93.0</b><br>
+mAP<sup>★</sup> (%)
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<p align="center">
+  <b>mAP<sup>★</sup></b> denotes the mAP (%) obtained with the Swin-Base backbone.
+</p>
+
 | Method | Backbone | Base Detector | mAP (%) | Runtime (ms) |
 | :-----: | :------: | :-----------: | :-----: | :----------: |
 | M2TDiff | ResNet-101 | Deformable DETR | **89.2** | 22.1 |
