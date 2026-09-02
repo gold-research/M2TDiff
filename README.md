@@ -124,8 +124,8 @@ code_root/
         │   └── val/
         │
         └── annotations/
-            ├── visdrone_vid_train.json
-            └── visdrone_vid_val.json
+            ├── train/
+            └── val/
 ```
 
 After downloading and processing the datasets, make sure that the directory
