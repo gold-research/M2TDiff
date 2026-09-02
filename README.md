@@ -1,6 +1,6 @@
 This repository is an official implementation of M2TDiff.
 
-**An Extended Framework Built upon Our [AAAI 2025](https://ojs.aaai.org/index.php/AAAI/article/view/32703) and [AAAI 2026](https://ojs.aaai.org/index.php/AAAI/article/view/37798) Works**
+**M2TDiff is an Extended Framework Built upon Our [AAAI 2025](https://ojs.aaai.org/index.php/AAAI/article/view/32703) and [AAAI 2026](https://ojs.aaai.org/index.php/AAAI/article/view/37798) Works**
 
 # M2TDiff: Multi-Scale MoE-Enhanced Transformer Diffusion Network for Video Object Detection
 
@@ -43,10 +43,10 @@ M2TDiff-Fast obtains 88.5% mAP at 53.8 FPS.
 
 ## Main Results
 
-|  Method |  Backbone  | Base Detector |  mAP     | Runtime(ms) |
+|  Method |  Backbone Network  | Base Detector |  mAP (%)     | Runtime (ms) |
 | :-----: | :--------: | :-----------: | :------: | :------: |
-| M2TDiff | ResNet-101 | Deformable Detr           | **89.2** |   22.1   |
-| M2TDiff |  Swin-Base |       Deformable Detr     | **93.0** |   39.6   |
+| M2TDiff | ResNet-101 | Deformable DETR           | **89.2** |   22.1   |
+| M2TDiff |  Swin-Base |       Deformable DETR     | **93.0** |   39.6   |
 
 
 
