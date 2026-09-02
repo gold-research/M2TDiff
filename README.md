@@ -107,8 +107,8 @@ The expected directory structure is:
 ```text
 code_root/
 └── datasets/
-    └── ImageSets/
     └── imagenet_vid/
+        ├──ImageSets/
         ├── Data/
         │   └── DET/
         │   └── VID/   
@@ -129,12 +129,8 @@ code_root/
 └── datasets/
     └── visdrone_vid/
         ├── sequences/
-        │   ├── train/
-        │   └── val/
         │
         └── annotations/
-            ├── train/
-            └── val/
 ```
 
 After downloading and processing the datasets, make sure that the directory
