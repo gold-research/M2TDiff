@@ -156,7 +156,7 @@ as the resume model:
 
 ```bash
 #  4 GPUs
-GPUS_PER_NODE=4 ./tools/run_dist_launch.sh $1 r101 $2 configs/r101_train_m2tdiff.sh
+GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_train_m2tdiff.sh
 ```
 
 All RDQG, MGTE, and SMTD hyperparameters are exposed as `main.py` flags;
