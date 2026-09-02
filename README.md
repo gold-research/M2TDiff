@@ -95,7 +95,8 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
 
 ### Dataset Preparation
 
-M2TDiff is evaluated on the widely used video object detection benchmark, **ImageNet VID**. To further evaluate its generalization capability, we additionally conduct experiments on **VisDrone-VID**. Before training and evaluation, the annotations of ImageNet VID and VisDrone-VID need to be converted into the unified JSON format used by M2TDiff. ImageNet VID provides annotations in XML format, while VisDrone-VID provides annotations in TXT format. We provide ```tools/convert_to_vid_json.py ```to perform the conversion.
+M2TDiff is evaluated on the widely used video object detection benchmark, **ImageNet VID**. To further evaluate its generalization capability, we additionally conduct experiments on **VisDrone-VID**. Before training and evaluation,  we covert jsons of two datasets by using the ```tools/convert_to_vid_json.py ```. 
+
 
 #### ImageNet VID
 
