@@ -170,8 +170,6 @@ see `configs/r101_train_m2tdiff.sh` for the recommended values.
 Evaluate the full M2TDiff framework using the released checkpoint:
 
 ```bash
-# Evaluate the M2TDiff checkpoint
-# Writes eval_<dataset>.json with mAP@0.5, ms/frame, and FPS
 ./tools/eval_m2tdiff.sh exps/m2tdiff/r101_m2tdiff checkpoint.pth
 ```
 
