@@ -114,8 +114,7 @@ code_root/
         │
         └── Annotations/
             └── DET/
-            └── VID/
-                
+            └── VID/           
 ```
 
 #### VisDrone-VID
