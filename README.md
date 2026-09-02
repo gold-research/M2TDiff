@@ -100,9 +100,7 @@ M2TDiff is evaluated on the widely used video object detection benchmark, **Imag
 #### ImageNet VID
 
 Download the ILSVRC2015 DET and ILSVRC2015 VID datasets from
-[the official website](https://image-net.org/challenges/LSVRC/2015/2015-downloads),
-and convert the annotations to JSON format using the
-[MMTracking tools](https://github.com/open-mmlab/mmtracking/blob/master/tools/convert_datasets/ilsvrc/).
+[the official website](https://image-net.org/challenges/LSVRC/2015/2015-downloads).
 
 The expected directory structure is:
 
