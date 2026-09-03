@@ -110,11 +110,11 @@ code_root/
     └── imagenet_vid/
         ├── ImageSets/
         ├── Data/
-            ├──  DET/
-            └── VID/   
+        |    ├──  DET/
+        |    └── VID/   
         └── Annotations/
-            ├──  DET/
-            └── VID/           
+             ├──  DET/
+             └── VID/           
 ```
 
 #### VisDrone-VID
