@@ -110,10 +110,10 @@ code_root/
     └── imagenet_vid/
         ├── ImageSets/
         ├── Data/
-        |    ├──  DET/
+        |    ├── DET/
         |    └── VID/   
         └── Annotations/
-             ├──  DET/
+             ├── DET/
              └── VID/           
 ```
 
