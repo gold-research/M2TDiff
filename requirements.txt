@@ -2,10 +2,10 @@
 # Install PyTorch and torchvision from https://pytorch.org/get-started
 # (the deformable-attention op is compiled against your local CUDA/PyTorch,
 # see models/ops/make.sh).
-# PyTorch 2.5.1 + torchvision 0.20.1 recommended.
+# PyTorch 2.1.2 + torchvision 0.16.2 recommended.
 
-torch==2.5.1
-torchvision==0.20.1
+torch==2.1.2
+torchvision==0.16.2
 
 numpy
 opencv-python
