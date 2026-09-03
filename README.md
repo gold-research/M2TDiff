@@ -72,15 +72,15 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
 
 ### Requirements
 
-* Linux, CUDA>=12.1, GCC>=10
+* Linux, CUDA 12.1, GCC>=10
 
-* Python>=3.9
+* Python>=3.8
 
   We recommend using Anaconda to create a conda environment
 
 
 
-* PyTorch>=2.5.1, torchvision>=0.20.1 (following instructions [here](https://pytorch.org/))
+* PyTorch>=2.1.2, torchvision>=0.16.2 (following instructions [here](https://pytorch.org/))
 
 
 * Other requirements
