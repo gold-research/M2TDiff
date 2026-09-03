@@ -74,7 +74,7 @@ The codebase is built on top of [Deformable DETR](https://github.com/fundamental
 
 * Linux, CUDA 12.1, GCC>=10
 
-* Python>=3.8
+* Python>=3.10
 
   We recommend using Anaconda to create a conda environment
 
