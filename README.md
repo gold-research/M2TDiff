@@ -1,6 +1,6 @@
 This repository is an official implementation of M2TDiff.
 
-**M2TDiff is an Extended Framework Built upon Our [AAAI 2025](https://ojs.aaai.org/index.php/AAAI/article/view/32703) and [AAAI 2026](https://ojs.aaai.org/index.php/AAAI/article/view/37798) Works**
+**M2TDiff is a novel video object detection framework building upon our [AAAI 2025](https://ojs.aaai.org/index.php/AAAI/article/view/32703)  and [AAAI 2026](https://ojs.aaai.org/index.php/AAAI/article/view/37798) works, with substantial technical advancements over both.**
 
 # M2TDiff: Multi-Scale MoE-Enhanced Transformer Diffusion Network for Video Object Detection
 
