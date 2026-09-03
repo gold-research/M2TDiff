@@ -112,7 +112,6 @@ code_root/
         ├── Data/
         │   └── DET/
         │   └── VID/   
-        │
         └── Annotations/
             └── DET/
             └── VID/           
@@ -129,7 +128,6 @@ code_root/
 └── datasets/
     └── visdrone_vid/
         ├── sequences/
-        │
         └── annotations/
 ```
 
