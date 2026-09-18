@@ -34,7 +34,7 @@ which further improve detection accuracy by exploring more
 diverse spatial-temporal cues and accelerate inference speed via
 a differentiated keyframe/non-keyframe processing strategy. We
 conduct experiments on the ImageNet VID and VisDrone-VID
-datasets and the results show that M2TDiff achieves state-of-theart performance with a favorable accuracy-efficiency trade-off,
+datasets and the results show that M2TDiff achieves state-of-the-art performance with a favorable accuracy-efficiency trade-off,
 while its two variants further extend this frontier toward higher
 accuracy and faster inference, respectively. Particularly, on the
 ImageNet VID dataset, M2TDiff achieves 89.2% mAP at 45.2
