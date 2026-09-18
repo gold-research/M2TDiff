@@ -34,12 +34,12 @@ def _get_clones(module, N):
 
 class DeformableDETR(nn.Module):
     """ This is the Deformable DETR module that performs object detection """
-    def __init__(self, backbone, transformer, num_classes, num_queries, num_feature_levels, 
-                 num_ref_frames = 3, aux_loss=True, with_box_refine=False, two_stage=False,
+    def __init__(self, backbone, transformer, num_classes, num_queries, num_feature_levels,
+                 num_ref_frames=4, aux_loss=True, with_box_refine=False, two_stage=False,
                  use_rdqg=False, diffusion_steps=4, num_diffusion_trajectories=5,
                  rdqg_loss_coef=0.1, dim_feedforward=1024, dropout=0.1, in_channels=2048,
                  use_smtd=False, num_experts=4, load_balance_coef=0.001,
-                 infer_seed=None):
+                 infer_seed=None, rho=0.8, xi=0.7, plus_plus_ref_frames=10):
         """ Initializes the model.
         Parameters:
             backbone: torch module of the backbone to be used. See backbone.py
@@ -60,10 +60,16 @@ class DeformableDETR(nn.Module):
             num_experts: number of experts Y per MoE block
             load_balance_coef: weight for the SMTD load-balance auxiliary loss L_aux
             infer_seed: optional int; fixed seed for reproducible RDQG inference
+            rho: M2TDiff++ proportion rho (paper: 0.8)
+            xi: M2TDiff-Fast keyframe selection threshold xi (paper: 0.7)
+            plus_plus_ref_frames: M2TDiff++ number of sampled reference frames R (paper: 10)
         """
         super().__init__()
         self.num_queries = num_queries
         self.num_ref_frames = num_ref_frames
+        self.rho = rho
+        self.xi = xi
+        self.plus_plus_ref_frames = plus_plus_ref_frames
         self.transformer = transformer
         hidden_dim = transformer.d_model
         self.class_embed = nn.Linear(hidden_dim, num_classes)
@@ -586,6 +592,9 @@ def build(args):
         num_experts=getattr(args, 'num_experts', 4),
         load_balance_coef=getattr(args, 'load_balance_coef', 0.001),
         infer_seed=getattr(args, 'infer_seed', None),
+        rho=getattr(args, 'rho', 0.8),
+        xi=getattr(args, 'xi', 0.7),
+        plus_plus_ref_frames=getattr(args, 'plus_plus_ref_frames', 10),
     )
     if args.masks:
         model = DETRsegm(model, freeze_detr=(args.frozen_weights is not None))

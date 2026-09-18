@@ -21,7 +21,7 @@ from models.ops.modules import MSDeformAttn
 
 
 class DeformableTransformer(nn.Module):
-    def __init__(self, d_model=256, nhead=8,
+    def __init__(self, d_model=256, nhead=4,
                  num_encoder_layers=6, num_decoder_layers=6, dim_feedforward=1024, dropout=0.1,
                  activation="relu", return_intermediate_dec=False,
                  num_feature_levels=4, dec_n_points=4,  enc_n_points=4,
@@ -314,17 +314,17 @@ class DeformableTransformerDecoderLayer(nn.Module):
         return tgt
 
 class TemporalDeformableTransformerEncoderLayer(nn.Module):
-    def __init__(self, d_model = 256, d_ffn=1024, dropout=0.1, 
-                 activation='relu', n_frames = 4, h_heads = 8, n_points=4):
+    def __init__(self, d_model = 256, d_ffn=1024, dropout=0.1,
+                 activation='relu', n_frames=4, h_heads=4, n_points=4):
         super().__init__()
 
-        # cross attention 
+        # cross attention
         self.cross_attn = MSDeformAttn(d_model, n_frames, h_heads, n_points)
         self.dropout1 = nn.Dropout(dropout)
         self.norm1 = nn.LayerNorm(d_model)
 
         # self attention
-        self.self_attn = nn.MultiheadAttention(d_model, n_heads, dropout=dropout)
+        self.self_attn = nn.MultiheadAttention(d_model, h_heads, dropout=dropout)
         self.dropout2 = nn.Dropout(dropout)
         self.norm2 = nn.LayerNorm(d_model)
 

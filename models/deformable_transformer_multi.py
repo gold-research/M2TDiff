@@ -27,12 +27,12 @@ except Exception:
 
 
 class DeformableTransformer(nn.Module):
-    def __init__(self, d_model=256, nhead=8,
+    def __init__(self, d_model=256, nhead=4,
                  num_encoder_layers=6, num_decoder_layers=6, dim_feedforward=1024, dropout=0.1,
                  activation="relu", return_intermediate_dec=False,
                  num_feature_levels=4, dec_n_points=4,  enc_n_points=4,
                  two_stage=False, two_stage_num_proposals=300, n_temporal_decoder_layers = 1,
-                 num_ref_frames = 3, fixed_pretrained_model = False, args=None,
+                 num_ref_frames = 4, fixed_pretrained_model = False, args=None,
                  use_mgte=False, graph_layers=2, knn_k=11,
                  use_smtd=False, num_experts=4, load_balance_coef=0.001):
         super().__init__()
@@ -359,7 +359,7 @@ class TemporalQueryEncoder(nn.Module):
 
 class TemporalDeformableTransformerEncoderLayer(nn.Module):
     def __init__(self, d_model = 256, d_ffn=1024, dropout=0.1, 
-                 activation='relu', num_ref_frames = 3, n_heads = 8, n_points=4):
+                 activation='relu', num_ref_frames = 4, n_heads = 4, n_points=4):
         super().__init__()
 
         # cross attention 
