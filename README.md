@@ -162,8 +162,7 @@ as the resume model:
 GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_train_m2tdiff.sh
 ```
 
-All RDQG, MGTE, and SMTD hyperparameters are exposed as `main.py` flags;
-see `configs/r101_train_m2tdiff.sh` for the recommended values.
+
 
 ### Evaluation
 
