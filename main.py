@@ -32,15 +32,18 @@ def get_args_parser():
     parser.add_argument('--lr_backbone', default=2e-5, type=float)
     parser.add_argument('--lr_linear_proj_names', default=['reference_points', 'sampling_offsets'], type=str, nargs='+')
     parser.add_argument('--lr_linear_proj_mult', default=0.1, type=float)
-    parser.add_argument('--batch_size', default=2, type=int)
-    parser.add_argument('--weight_decay', default=1e-4, type=float)
+    parser.add_argument('--batch_size', default=1, type=int,
+                        help='mini-batch size per GPU (paper: 1 per RTX 5090)')
+    parser.add_argument('--weight_decay', default=1e-4, type=float,
+                        help='AdamW weight decay (paper: 1e-4)')
     parser.add_argument('--epochs', default=15, type=int)
     parser.add_argument('--lr_drop', default=5, type=int)
     parser.add_argument('--lr_drop_epochs', default=None, type=int, nargs='+')
     parser.add_argument('--clip_max_norm', default=0.1, type=float,
                         help='gradient clipping max norm')
-    
-    parser.add_argument('--num_ref_frames', default=3, type=int, help='number of reference frames')
+
+    parser.add_argument('--num_ref_frames', default=4, type=int,
+                        help='number of reference frames during training (paper: 4)')
 
     parser.add_argument('--sgd', action='store_true')
 
@@ -64,7 +67,7 @@ def get_args_parser():
     parser.add_argument('--num_trajectories', default=None, type=int,
                         help='alias for --num_diffusion_trajectories (design doc naming)')
     parser.add_argument('--frames', default=None, type=int,
-                        help='video clip length M (frames); maps to num_ref_frames = M - 1')
+                        help='video clip length M (frames) for inference; maps to num_ref_frames = M - 1 (paper default M=30)')
     parser.add_argument('--infer_seed', default=None, type=int,
                         help='fixed seed for reproducible RDQG inference; '
                              'None = random noise boxes per frame')
@@ -85,6 +88,14 @@ def get_args_parser():
     parser.add_argument('--load_balance_coef', default=0.001, type=float,
                         help='SMTD load-balance auxiliary loss weight')
 
+    # M2TDiff variants
+    parser.add_argument('--rho', default=0.8, type=float,
+                        help='M2TDiff++ proportion rho (paper: 0.8)')
+    parser.add_argument('--xi', default=0.7, type=float,
+                        help='M2TDiff-Fast keyframe selection threshold xi (paper: 0.7)')
+    parser.add_argument('--plus_plus_ref_frames', default=10, type=int,
+                        help='M2TDiff++ number of sampled reference frames R during inference (paper: 10)')
+
     # Model parameters
     parser.add_argument('--frozen_weights', type=str, default=None,
                         help="Path to the pretrained model. If set, only the mask head will be trained")
@@ -103,17 +114,17 @@ def get_args_parser():
 
     # * Transformer
     parser.add_argument('--enc_layers', default=4, type=int,
-                        help="Number of encoding layers in the transformer")
+                        help="Number of encoding layers in the transformer (paper: 4)")
     parser.add_argument('--dec_layers', default=4, type=int,
-                        help="Number of decoding layers in the transformer")
+                        help="Number of decoding layers in the transformer (paper: 4)")
     parser.add_argument('--dim_feedforward', default=1024, type=int,
                         help="Intermediate size of the feedforward layers in the transformer blocks")
     parser.add_argument('--hidden_dim', default=256, type=int,
                         help="Size of the embeddings (dimension of the transformer)")
     parser.add_argument('--dropout', default=0.1, type=float,
                         help="Dropout applied in the transformer")
-    parser.add_argument('--nheads', default=8, type=int,
-                        help="Number of attention heads inside the transformer's attentions")
+    parser.add_argument('--nheads', default=4, type=int,
+                        help="Number of attention heads inside the transformer's attentions (paper: 4)")
     parser.add_argument('--num_queries', default=300, type=int,
                         help="Number of query slots")
     parser.add_argument('--dec_n_points', default=4, type=int)
