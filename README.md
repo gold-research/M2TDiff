@@ -142,7 +142,7 @@ to place the datasets under the `datasets/` directory.
    put the checkpoint into:
 
 ```text
-./exps/our_models/COCO_pretrained_model/
+./exps/m2tdiff/COCO_pretrained_model/
 ```
 
 2. Train the single-frame baseline, which is used as the resume checkpoint
