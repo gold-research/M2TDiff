@@ -166,7 +166,7 @@ GPUS_PER_NODE=4 ./tools/run_dist_launch.sh 4 configs/r101_train_m2tdiff.sh
 
 ### Evaluation
 
-Evaluate the full M2TDiff framework using the released checkpoint:
+Evaluate the full M2TDiff framework using the trained checkpoint:
 
 ```bash
 ./tools/eval_m2tdiff.sh exps/m2tdiff/r101_m2tdiff checkpoint.pth
