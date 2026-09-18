@@ -57,7 +57,7 @@ def get_args_parser():
     parser.add_argument('--diffusion_steps', default=4, type=int,
                         help='RDQG reverse diffusion steps T')
     parser.add_argument('--num_diffusion_trajectories', default=5, type=int,
-                        help='RDQG number of training trajectories K')
+                        help='RDQG number of training trajectories N')
     parser.add_argument('--rdqg_loss_coef', default=0.1, type=float,
                         help='RDQG L_simple loss weight')
     parser.add_argument('--diff_loss_coef', default=1.0, type=float,
