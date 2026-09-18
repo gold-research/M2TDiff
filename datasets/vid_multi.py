@@ -26,7 +26,7 @@ from torch.utils.data.dataset import ConcatDataset
 import random
 
 class CocoDetection(TvCocoDetection):
-    def __init__(self, img_folder, ann_file, transforms, return_masks, interval1, interval2, num_ref_frames= 3,
+    def __init__(self, img_folder, ann_file, transforms, return_masks, interval1, interval2, num_ref_frames=4,
         is_train = True,  filter_key_img=True,  cache_mode=False, local_rank=0, local_size=1):
         super(CocoDetection, self).__init__(img_folder, ann_file,
                                             cache_mode=cache_mode, local_rank=local_rank, local_size=local_size)
@@ -214,12 +214,14 @@ def make_coco_transforms(image_set):
         T.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    scales = [480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800]
+    # Paper: random resizing so that the shorter side is no less than 600
+    # pixels and the longer side is limited to 1000 pixels.
+    scales = [600, 700, 800, 900, 1000]
 
     if image_set == 'train_vid' or image_set == "train_det" or image_set == "train_joint":
         return T.Compose([
             T.RandomHorizontalFlip(),
-            T.RandomResize([600], max_size=1000),
+            T.RandomResize(scales, max_size=1000),
             normalize,
         ])
 
