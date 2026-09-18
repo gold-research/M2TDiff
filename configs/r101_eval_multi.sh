@@ -14,9 +14,13 @@ python -u main.py \
     --num_queries 300 \
     --dilation \
     --batch_size 1 \
-    --num_ref_frames 14 \
+    --frames 30 \
+    --plus_plus_ref_frames 10 \
+    --rho 0.8 \
+    --xi 0.7 \
+    --nheads 4 \
     --resume ${EXP_DIR}/checkpoint0006.pth \
-    --lr_drop_epochs 4 6 \
+    --lr_drop_epochs 5 \
     --num_workers 16 \
     --with_box_refine \
     --dataset_file vid_multi \

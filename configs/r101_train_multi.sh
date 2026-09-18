@@ -13,9 +13,10 @@ python -u main.py \
     --num_queries 300 \
     --dilation \
     --batch_size 1 \
-    --num_ref_frames 14 \
+    --num_ref_frames 4 \
+    --nheads 4 \
     --resume ./exps/singlebaseline/r101/checkpoint0009.pth \
-    --lr_drop_epochs 4 6 \
+    --lr_drop_epochs 5 \
     --num_workers 16 \
     --with_box_refine \
     --dataset_file vid_multi \
